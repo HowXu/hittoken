@@ -1,43 +1,17 @@
-import Fastify from "fastify"; import { readFile } from "fs/promises";
-import path from "path";
+import Fastify from "fastify";
+import cachedData from "./sentences.json"
 
-async function returnSentence(data: Sentence[]) {
-    return data[Math.floor(Math.random() * len)];
-}
-
-interface Sentence {
-    "hitokoto": string,
-    "from": string,
-};
 
 const app = Fastify({
     logger: true,
 });
 
-let cachedData: Sentence[];
-let len: number;
-const file = path.join(process.cwd(), 'sentences.json');
-
-app.addHook('onReady', async () => {
-    try {
-        const rawData = await readFile(file, 'utf-8');
-        cachedData = JSON.parse(rawData);
-        len = cachedData.length;
-        console.log("Loaded Json Data");
-    } catch (error) {
-        console.error("Load Json Data failed", error);
-    }
-});
+const len: number = cachedData.length;
 
 // get
 app.get('/', async (_req, reply) => {
-    if (!cachedData) {
-        return reply.status(500).send({ error: "Process Data" });
-    }
-    // randomly select a sentence and return
-    const rt = await returnSentence(cachedData);
-    // console.log(rt);
-    return reply.send(rt);
+    const idx = Math.floor(Math.random() * len);
+    return reply.send(cachedData[idx]);
 });
 
 app.get('/favicon.ico', (_req, res) =>
@@ -59,5 +33,6 @@ if (!isVercel) {
     };
     start();
 }
+
 export default app;
 

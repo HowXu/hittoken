@@ -11,10 +11,12 @@
         "@types/node": "^25.6.2",
         "fastify": "^5.8.5",
         "tsx": "^4.21.0",
-        "typescript": "^6.0.3"
+        "typescript": "^6.0.3",
+        "vercel": "^53.3.1"
     },
     "scripts": {
-        "dev": "tsx api/index.ts",
-        "start": "tsx api/index.ts"
+        "vdev": "vercel dev",
+        "start": "tsx api/index.ts",
+        "prod": "vercel --prod"
     }
 }
