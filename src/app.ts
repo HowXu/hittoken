@@ -9,7 +9,7 @@ const app = Fastify({
 });
 
 app.register(cors, {
-    origin: ["https://howxu.cn"]
+    origin: true
 });
 
 const len: number = cachedData.length;
