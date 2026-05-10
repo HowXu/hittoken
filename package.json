@@ -1,0 +1,20 @@
+{
+    "name": "hittoken",
+    "version": "1.0.0",
+    "description": "an api return a random sentences",
+    "main": "index.js",
+    "repository": "https://github.com/HowXu/hittoken",
+    "author": "HowXu",
+    "license": "MIT",
+    "private": null,
+    "dependencies": {
+        "@types/node": "^25.6.2",
+        "fastify": "^5.8.5",
+        "tsx": "^4.21.0",
+        "typescript": "^6.0.3"
+    },
+    "scripts": {
+        "dev": "tsx api/index.ts",
+        "start": "tsx api/index.ts"
+    }
+}
