@@ -2,7 +2,6 @@
     "name": "hittoken",
     "version": "1.0.0",
     "description": "an api return a random sentences",
-    "main": "index.js",
     "repository": "https://github.com/HowXu/hittoken",
     "author": "HowXu",
     "license": "MIT",
@@ -15,8 +14,7 @@
         "vercel": "^53.3.1"
     },
     "scripts": {
-        "vdev": "vercel dev",
         "start": "tsx api/index.ts",
-        "prod": "vercel --prod"
+        "build": "tsc"
     }
 }
